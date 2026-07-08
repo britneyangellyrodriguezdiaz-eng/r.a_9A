@@ -45,10 +45,10 @@
     </div>
 
     <script>
-        // Al cargar la página, pedimos los datos mediante fetch
+    
         fetch('get_productos.php')
             .then(response => {
-                // Si el archivo PHP nos rebota (porque no hay sesión), nos manda al login
+            
                 if (response.redirected) {
                     window.location.href = response.url;
                     return;
@@ -57,18 +57,18 @@
             })
             .then(data => {
                 const tbody = document.getElementById('tabla-productos');
-                tbody.innerHTML = ''; // Limpiar el mensaje de "Cargando..."
+                tbody.innerHTML = ''; 
 
                 if (data.length === 0) {
                     tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted">No se encontraron registros.</td></tr>`;
                     return;
                 }
 
-                // Recorremos los datos que envió PHP y los dibujamos en la tabla HTML
+            
                 data.forEach(producto => {
                     const fila = document.createElement('tr');
                     
-                    // Formatear precio a dos decimales
+                   
                     const precioFormateado = parseFloat(producto.precio).toFixed(2);
 
                     fila.innerHTML = `
