@@ -2,7 +2,7 @@
 session_start();
 require 'conexion.php';
 
-// Si ya está logueado, redirigir al panel principal
+
 if (isset($_SESSION['usuario'])) {
     header("Location: index.php");
     exit();
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($resultado->num_rows == 1) {
         $row = $resultado->fetch_assoc();
-        // Por esto (encripta la contraseña que escribe el usuario en SHA1 y la compara):
+        
             if (sha1($password) === $row['password']) {
             $_SESSION['usuario'] = $row['usuario'];
             header("Location: index.php");
